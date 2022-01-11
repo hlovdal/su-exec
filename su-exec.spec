@@ -1,6 +1,6 @@
 Name:           su-exec
 Version:        0.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Switch user and group id, setgroups and exec
 License:        MIT
 URL:            https://github.com/frebib/su-exec
@@ -10,6 +10,7 @@ URL:            https://github.com/frebib/su-exec
 Source0:        https://github.com/frebib/su-exec/archive/v%{version}.tar.gz
 
 BuildRequires: vim-common
+BuildRequires: %{toolchain} make
 
 %description
 This is a simple tool that will simply execute a program with different
@@ -24,12 +25,13 @@ tar zxvf %{SOURCE0}
 mv su-exec-%{version}/* .
 
 %build
-make
+%set_build_flags
+%make_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 strip su-exec
-make install DESTDIR=$RPM_BUILD_ROOT PREFIX=%{_prefix}
+%make_install PREFIX=%{_prefix}
 
 %files
 %license LICENSE
@@ -38,6 +40,9 @@ make install DESTDIR=$RPM_BUILD_ROOT PREFIX=%{_prefix}
 %{_bindir}/su-exec
 
 %changelog
+* Tue Jan 11 2022 Håkon Løvdal <kode@denkule.no> - 0.4-3
+- Add build requirement for compiler + make.
+
 * Tue Jan 11 2022 Håkon Løvdal <kode@denkule.no> - 0.4-2
 - Add build requirement for xxd.
 
