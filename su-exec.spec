@@ -1,6 +1,6 @@
 Name:           su-exec
 Version:        0.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Switch user and group id, setgroups and exec
 License:        MIT
 URL:            https://github.com/frebib/su-exec
@@ -8,6 +8,8 @@ URL:            https://github.com/frebib/su-exec
 # curl -L https://github.com/frebib/su-exec/archive/v0.4.tar.gz -o su-exec-0.4.tar.gz
 # Source0:        su-exec-0.4.tar.gz
 Source0:        https://github.com/frebib/su-exec/archive/v%{version}.tar.gz
+
+BuildRequires: vim-common
 
 %description
 This is a simple tool that will simply execute a program with different
@@ -36,5 +38,8 @@ make install DESTDIR=$RPM_BUILD_ROOT PREFIX=%{_prefix}
 %{_bindir}/su-exec
 
 %changelog
+* Tue Jan 11 2022 Håkon Løvdal <kode@denkule.no> - 0.4-2
+- Add build requirement for xxd.
+
 * Tue Jan 11 2022 Håkon Løvdal <kode@denkule.no> - 0.4-1
 - Created spec file.
