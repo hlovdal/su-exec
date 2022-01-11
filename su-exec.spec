@@ -1,6 +1,6 @@
 Name:           su-exec
 Version:        0.4
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Switch user and group id, setgroups and exec
 License:        MIT
 URL:            https://github.com/frebib/su-exec
@@ -10,7 +10,7 @@ URL:            https://github.com/frebib/su-exec
 Source0:        https://github.com/frebib/su-exec/archive/v%{version}.tar.gz
 
 BuildRequires: vim-common
-BuildRequires: %{toolchain} make
+BuildRequires: gcc make
 
 %description
 This is a simple tool that will simply execute a program with different
@@ -40,6 +40,9 @@ strip su-exec
 %{_bindir}/su-exec
 
 %changelog
+* Tue Jan 11 2022 Håkon Løvdal <kode@denkule.no> - 0.4-4
+- Replace toolchain macro with gcc.
+
 * Tue Jan 11 2022 Håkon Løvdal <kode@denkule.no> - 0.4-3
 - Add build requirement for compiler + make.
 
